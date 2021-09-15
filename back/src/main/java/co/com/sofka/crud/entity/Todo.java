@@ -11,13 +11,13 @@ public class Todo {
     private Long id;
     private String name;
     private boolean completed;
-    private String groupListId;
+    private long groupListId;
 
-    public String getGroupListId() {
+    public long getGroupListId() {
         return groupListId;
     }
 
-    public void setGroupListId(String groupListId) {
+    public void setGroupListId(long groupListId) {
         this.groupListId = groupListId;
     }
 
