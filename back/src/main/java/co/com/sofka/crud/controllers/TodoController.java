@@ -12,7 +12,7 @@ public class TodoController {
     @Autowired
     private TodoService service;
 
-    @GetMapping(value = "api/todos")
+    @GetMapping(value = "api/todo")
     public Iterable<Todo> list(){
         return service.list();
     }
