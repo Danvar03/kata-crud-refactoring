@@ -1,36 +1,56 @@
 package co.com.sofka.crud.services;
 
 
-import co.com.sofka.crud.entity.Todo;
+import co.com.sofka.crud.dao.TodoListDAO;
+
+import co.com.sofka.crud.dto.TodoListDto;
 import co.com.sofka.crud.entity.TodoList;
+import co.com.sofka.crud.mapper.TodoListMapper;
+
+import co.com.sofka.crud.mapper.TodoMapper;
 import co.com.sofka.crud.repositories.TodoListRepository;
+import co.com.sofka.crud.repositories.TodoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-@Service
-public class TodoListService {
+import java.util.HashSet;
+import java.util.Set;
 
+
+@Service
+public class TodoListService implements TodoListDAO {
 
     @Autowired
     private TodoListRepository repository;
+    @Autowired
+    private TodoListMapper mapper;
 
-    public Iterable<TodoList> list(){
-        return repository.findAll();
+    @Autowired
+
+    @Override
+    public Iterable<TodoListDto> list() {
+        Iterable<TodoList> todoLists = repository.findAll();
+        return mapper.toTodoListDto(todoLists);
+
     }
 
-    public TodoList save(TodoList todoList){
-        return repository.save(todoList);
+    @Override
+    public TodoListDto save(TodoListDto todoListDto) {
+        TodoList todoList = mapper.toTodoList(todoListDto);
+        return mapper.toTodoListDto(repository.save(todoList));
     }
 
-    public void delete(Long id){
-        repository.delete(get(id));
-    }
-
-    public TodoList get(Long id){
-        return repository.findById(id).orElseThrow();
+    @Override
+    public void delete(Long id) {
+        repository.delete(mapper.toTodoList(get(id)));
     }
 
 
+    @Override
+    public TodoListDto get(Long id) {
+        return mapper.toTodoListDto(repository.findById(id).orElseThrow());
+    }
 
 
 }
+

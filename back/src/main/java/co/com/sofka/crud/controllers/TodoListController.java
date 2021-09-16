@@ -1,48 +1,53 @@
 package co.com.sofka.crud.controllers;
 
+import co.com.sofka.crud.dto.TodoDto;
+import co.com.sofka.crud.dto.TodoListDto;
 import co.com.sofka.crud.entity.TodoList;
 import co.com.sofka.crud.services.TodoListService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Set;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:3000")
 public class TodoListController {
 
     @Autowired
-    private TodoListService listService;
+    private TodoListService service;
+
+    /*@GetMapping(value = "api/list/{id}/todo")
+    public Set<TodoListDto> listTodoByListIb(@PathVariable("id")Long id){
+        return service.list(id);
+    }*/
 
     @GetMapping(value = "api/list")
-    public Iterable<TodoList> list(){
-        return listService.list();
+    public  Iterable<TodoListDto> list(){
+        return service.list();
     }
 
     @PostMapping(value = "api/list")
-    public TodoList save(@RequestBody TodoList todoList){
-        return listService.save(todoList);
+    public TodoListDto save(@RequestBody TodoListDto todoListDto){
+        return  service.save(todoListDto);
     }
 
     @PutMapping(value = "api/list")
-    public TodoList update(@RequestBody TodoList todoList){
-        if(todoList.getId() != null){
-            return listService.save(todoList);
+    public TodoListDto update(@RequestBody TodoListDto todoListDto){
+        if(todoListDto.getId() != null){
+            return service.save(todoListDto);
         }
         throw new RuntimeException("No existe el id para actualziar");
     }
 
     @DeleteMapping(value = "api/{id}/list")
     public void delete(@PathVariable("id")Long id){
-        listService.delete(id);
+        service.delete(id);
     }
 
     @GetMapping(value = "api/{id}/list")
-    public TodoList get(@PathVariable("id") Long id){
-        return listService.get(id);
+    public TodoListDto get(@PathVariable("id") Long id){
+        return service.get(id);
     }
 
-
-
-
-
-
 }
+
