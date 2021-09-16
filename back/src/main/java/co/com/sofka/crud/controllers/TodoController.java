@@ -1,5 +1,7 @@
 package co.com.sofka.crud.controllers;
 
+import co.com.sofka.crud.dto.TodoDto;
+import co.com.sofka.crud.mapper.TodoMapper;
 import co.com.sofka.crud.services.TodoService;
 import co.com.sofka.crud.entity.Todo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,18 +14,18 @@ public class TodoController {
     @Autowired
     private TodoService service;
 
-    @GetMapping(value = "api/todo")
-    public Iterable<Todo> list(){
+    @GetMapping(value = "api/todos")
+    public Iterable<TodoDto> list(){
         return service.list();
     }
-    
+
     @PostMapping(value = "api/todo")
-    public Todo save(@RequestBody Todo todo){
-        return service.save(todo);
+    public TodoDto save(@RequestBody TodoDto todoDto){
+        return service.save(todoDto);
     }
 
     @PutMapping(value = "api/todo")
-    public Todo update(@RequestBody Todo todo){
+    public TodoDto update(@RequestBody TodoDto todo){
         if(todo.getId() != null){
             return service.save(todo);
         }
@@ -36,7 +38,7 @@ public class TodoController {
     }
 
     @GetMapping(value = "api/{id}/todo")
-    public Todo get(@PathVariable("id") Long id){
+    public TodoDto get(@PathVariable("id") Long id){
         return service.get(id);
     }
 

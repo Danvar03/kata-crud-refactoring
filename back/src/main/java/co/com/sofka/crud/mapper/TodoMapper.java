@@ -17,11 +17,9 @@ public interface TodoMapper {
             @Mapping(source = "completed", target = "completetado"),
             @Mapping(source = "groupListId", target = "gruoListaID")
     })
-    TodoDto toTodoDTO(Todo todo);
-
-    Iterable<TodoDto> toTodoDTOS(Iterable<Todo> toDos);
+    TodoDto toTodoDto(Todo todo);
+    Iterable<TodoDto> toTodoDto (Iterable<Todo> todos);
 
     @InheritInverseConfiguration
     Todo toTodo(TodoDto todoDto);
-
 }
