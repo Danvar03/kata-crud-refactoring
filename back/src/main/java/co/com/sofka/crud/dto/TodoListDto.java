@@ -4,16 +4,8 @@ import java.util.Set;
 
 public class TodoListDto {
     private Long id;
-    private String name;
-    private Set<TodoDto> todoDto;
-
-    public Set<TodoDto> getTodoDto() {
-        return todoDto;
-    }
-
-    public void setTodoDto(Set<TodoDto> todoDto) {
-        this.todoDto = todoDto;
-    }
+    private String nameList;
+    private Set<TodoDto> todos;
 
     public Long getId() {
         return id;
@@ -23,11 +15,19 @@ public class TodoListDto {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getNameList() {
+        return nameList;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setNameList(String nameList) {
+        this.nameList = nameList;
+    }
+
+    public Set<TodoDto> getTodos() {
+        return todos;
+    }
+
+    public void setTodos(Set<TodoDto> todos) {
+        this.todos = todos;
     }
 }

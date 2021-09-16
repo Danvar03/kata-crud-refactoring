@@ -20,7 +20,7 @@ public class TodoService implements TodoDAO {
     @Override
     public Iterable<TodoDto> list() {
         Iterable<Todo> todos = todoRepository.findAll();
-        return todoMapper.toTodoDto(todos);
+        return todoMapper.toTodoDtos(todos);
     }
 
 

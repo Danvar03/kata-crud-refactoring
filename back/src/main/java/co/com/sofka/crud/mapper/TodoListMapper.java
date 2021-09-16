@@ -10,13 +10,13 @@ import org.mapstruct.Mappings;
 @Mapper(componentModel = "spring")
 public interface TodoListMapper {
 
-    @Mappings({
-            @Mapping(source = "id", target = "idList"),
-            @Mapping(source = "name", target = "NombreList"),
-            @Mapping(source = "todos", target = "todoDto")
-    })
+    //@Mappings({
+         //   @Mapping(source = "nameList", target = "nameList"),
+
+
+    //})
     TodoListDto toTodoListDto(TodoList todoList);
-    Iterable<TodoListDto> toTodoListDto (Iterable<TodoList> todoList);
+    Iterable<TodoListDto> toTodoListDtos (Iterable<TodoList> todoList);
 
     @InheritInverseConfiguration
     TodoList toTodoList(TodoListDto todoDto);

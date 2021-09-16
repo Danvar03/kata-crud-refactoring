@@ -30,7 +30,7 @@ public class TodoListService implements TodoListDAO {
     @Override
     public Iterable<TodoListDto> list() {
         Iterable<TodoList> todoLists = repository.findAll();
-        return mapper.toTodoListDto(todoLists);
+        return mapper.toTodoListDtos(todoLists);
 
     }
 

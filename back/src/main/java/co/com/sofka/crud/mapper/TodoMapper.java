@@ -5,20 +5,13 @@ import co.com.sofka.crud.entity.Todo;
 
 import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
-import org.mapstruct.Mappings;
+
 
 @Mapper(componentModel = "spring")
 public interface TodoMapper {
 
-    @Mappings({
-            @Mapping(source = "id", target = "idList"),
-            @Mapping(source = "name", target = "Nombre"),
-            @Mapping(source = "completed", target = "completetado"),
-            @Mapping(source = "groupListId", target = "gruoListaID")
-    })
     TodoDto toTodoDto(Todo todo);
-    Iterable<TodoDto> toTodoDto (Iterable<Todo> todos);
+    Iterable<TodoDto> toTodoDtos (Iterable<Todo> todos);
 
     @InheritInverseConfiguration
     Todo toTodo(TodoDto todoDto);

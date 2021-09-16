@@ -11,15 +11,7 @@ public class Todo {
     private Long id;
     private String name;
     private boolean completed;
-    private long groupListId;
-
-    public long getGroupListId() {
-        return groupListId;
-    }
-
-    public void setGroupListId(long groupListId) {
-        this.groupListId = groupListId;
-    }
+    private Long groupListId;
 
     public Long getId() {
         return id;
@@ -43,5 +35,13 @@ public class Todo {
 
     public void setCompleted(boolean completed) {
         this.completed = completed;
+    }
+
+    public Long getGroupListId() {
+        return groupListId;
+    }
+
+    public void setGroupListId(Long groupListId) {
+        this.groupListId = groupListId;
     }
 }
