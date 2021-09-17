@@ -1,21 +1,21 @@
-import React, { createContext } from 'react';
-import { Form } from './Components/Form';
-import { List } from './Components/List';
-import { StoreProvider } from './utils/StoreProvider';
+import React from 'react';
+import { StoreProvider } from './components/utils/Store';
 
-export const HOST_API = "http://localhost:8080/api";
-export const initialState = {
-  todo: { list: [], item: {} }
-};
-export const Store = createContext(initialState)
+import TodoListForm from './components/list/TodoListForm';
+import TodoList from './components/list/TodoList';
 
 
 function App() {
   return <StoreProvider>
-    <h3>To-Do List</h3>
-    <Form />
-    <List />
+    <div className="container">
+      <br />
+      <div className="row border rounded">
+        <h1>Ingresa una lista de TodoList</h1>
+        <TodoListForm />
+      </div>
+      <br />
+    </div>
+    <TodoList/>
   </StoreProvider>
 }
-
 export default App;
